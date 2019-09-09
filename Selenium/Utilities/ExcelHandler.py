@@ -10,12 +10,9 @@ from ProjectPath import user_dir
 from os import remove
 
 class excelHandler:
+    
+    fileForExcel = user_dir+"\\Utilities\\updateData.txt"
 
-    sheet=""
-    sheetName =""
-    sheetIndex=0
-    filePath=""
-    wb=""
     def __init__(self, filePath, sheetName):
         self.wb = xlrd.open_workbook(filePath)
         self.filePath = filePath
@@ -51,7 +48,6 @@ class excelHandler:
                 tempDictionary[sheet.cell_value(row, 0)] = sheet.cell_value(row, 1)
         return tempDictionary
     
-    fileForExcel = user_dir+"\\Utilities\\updateData.txt"
 
     def setExcelData(self, sheetName, rowx, colx, data):
         fileForExcel = open(self.fileForExcel, "a+")

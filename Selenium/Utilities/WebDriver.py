@@ -10,9 +10,8 @@ from _datetime import datetime
 from Utilities import ExcelHandler
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import ElementNotVisibleException, NoSuchElementException,\
-    StaleElementReferenceException
-
+from selenium.common.exceptions import ElementNotVisibleException, NoSuchElementException, StaleElementReferenceException
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 class WebDriver:
     '''
@@ -26,17 +25,23 @@ class WebDriver:
         Constructor
         '''
         if(str(browserName).lower()=="chrome"):
+            capabilities = DesiredCapabilities.CHROME.copy()
+            capabilities['acceptInsecureCerts'] = True
             self.driver = webdriver.Chrome(user_dir+"\\resources\\drivers\\chromedriver.exe")
             self.driver.delete_all_cookies()
             self.driver.maximize_window()
         
         elif(str(browserName).lower()=="mozilla"):
-            self.driver = webdriver.Chrome(user_dir+"\\resources\\drivers\\geckodriver.exe")
+            capabilities = DesiredCapabilities.FIREFOX.copy()
+            capabilities['acceptInsecureCerts'] = True
+            self.driver = webdriver.Firefox(user_dir+"\\resources\\drivers\\geckodriver.exe")
             self.driver.delete_all_cookies()
             self.driver.maximize_window()
         
         elif(str(browserName).lower()=="ie"):
-            self.driver = webdriver.Chrome(user_dir+"\\resources\\drivers\\IEDriverServer.exe")
+            capabilities = DesiredCapabilities.INTERNETEXPLORER.copy()
+            capabilities['acceptInsecureCerts'] = True
+            self.driver = webdriver.Ie(user_dir+"\\resources\\drivers\\IEDriverServer.exe")
             self.driver.delete_all_cookies()
             self.driver.maximize_window()
         
@@ -50,11 +55,15 @@ class WebDriver:
         
     def takeScreenShotPass(self):
         now = datetime.now()
-        self.driver.get_screenshot_as_file(user_dir+"\\screenshots\\pass\\pass_"+now.strftime("%Y%m%d%H%M%S")+".png")
+        imgFile = user_dir+"\\screenshots\\pass\\pass_"+now.strftime("%Y%m%d%H%M%S")+".png"
+        self.driver.get_screenshot_as_file(imgFile)
+        return imgFile
         
     def takeScreenShotFail(self):
         now = datetime.now()
-        self.driver.get_screenshot_as_file(user_dir+"\\screenshots\\fail\\fail_"+now.strftime("%Y%m%d%H%M%S")+".png")
+        imgFile = user_dir+"\\screenshots\\fail\\fail_"+now.strftime("%Y%m%d%H%M%S")+".png"
+        self.driver.get_screenshot_as_file(imgFile)
+        return imgFile
         
     def close(self):
         self.driver.quit()

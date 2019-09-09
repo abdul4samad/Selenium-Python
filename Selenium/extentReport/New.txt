@@ -1,0 +1,27 @@
+Start| | | 
+pass|new step1|pass kro| 
+pass|new step1|pass kro| 
+pass|new step1|pass kro| 
+pass|new step1|pass kro| 
+fail|new step1|pass kro| 
+pass|new img|pass kro|C:\Users\Vicky Virus\Pictures\profile.jpg
+fail|new img|pass kro|C:\Users\Vicky Virus\Pictures\profile.jpg
+stop| | | 
+Start| | | 
+pass|new step1|pass kro| 
+pass|new step1|pass kro| 
+pass|new step1|pass kro| 
+pass|new step1|pass kro| 
+fail|new step1|pass kro| 
+pass|new img|pass kro|C:\Users\Vicky Virus\Pictures\profile.jpg
+fail|new img|pass kro|C:\Users\Vicky Virus\Pictures\profile.jpg
+stop| | | 
+Start| | | 
+pass|new step1|pass kro| 
+pass|new step1|pass kro| 
+pass|new step1|pass kro| 
+pass|new step1|pass kro| 
+fail|new step1|pass kro| 
+pass|new img|pass kro|C:\Users\Vicky Virus\Pictures\profile.jpg
+fail|new img|pass kro|C:\Users\Vicky Virus\Pictures\profile.jpg
+stop| | | 
